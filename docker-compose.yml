@@ -6,7 +6,7 @@ version: "3.7"
 
 x-app-defaults: &app-defaults
   restart: unless-stopped
-  image: biswal21/monkelist:v1
+  image: biswal21/listmonk:v1
   ports:
     - "9000:9000"
   networks:
