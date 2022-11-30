@@ -5,7 +5,7 @@ admin_username = \"\"
 admin_password = \"\"
 # Database.
 [db]
-# host = \"f930ab53a4fe\"
+# host = \"container_IP\"
 host = \"172.17.0.2\"
 port = 5432
 user = \"listmonk\"
