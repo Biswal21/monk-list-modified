@@ -15,7 +15,7 @@ admin_password = "listmonk"
 # Database.
 [db]
 # host = "172..."
-host = "172.17.0.2"
+host = "db_container_IP"
 port = 5432
 user = "listmonk"
 password = "listmonk"
