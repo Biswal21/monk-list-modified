@@ -291,13 +291,13 @@ func (c *Core) InsertSubscriber(sub models.Subscriber, listIDs []int, listUUIDs 
 		return models.Subscriber{}, false, err
 	}
 
-	_, err = c.q.UpdateCampaignSubCounts.Exec(pq.Array(listIDs))
-	if err != nil {
-		c.log.Printf("error updating subscriber: %v", err)
-		return models.Subscriber{}, false, echo.NewHTTPError(http.StatusInternalServerError,
-			c.i18n.Ts("globals.messages.errorUpdating",
-				"name", "{globals.terms.subscriber}", "error", pqErrMsg(err)))
-	}
+	// _, err = c.q.UpdateCampaignSubCounts.Exec(pq.Array(listIDs))
+	// if err != nil {
+	// 	c.log.Printf("error updating subscriber: %v", err)
+	// 	return models.Subscriber{}, false, echo.NewHTTPError(http.StatusInternalServerError,
+	// 		c.i18n.Ts("globals.messages.errorUpdating",
+	// 			"name", "{globals.terms.subscriber}", "error", pqErrMsg(err)))
+	// }
 
 	hasOptin := false
 	if !preconfirm && c.constants.SendOptinConfirmation {

@@ -120,6 +120,7 @@ var (
 	ErrIsImporting = errors.New("import is already running")
 
 	csvHeaders = map[string]bool{
+		"id":         true,
 		"email":      true,
 		"name":       true,
 		"attributes": true}

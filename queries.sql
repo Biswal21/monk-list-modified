@@ -79,26 +79,6 @@ subs AS (
 )
 SELECT id from sub;
 
---name: update-campaign-sub-count
-WITH listsCount AS (SELECT COUNT(subscriber_id) AS cnt 
-    FROM subscriber_lists 
-    WHERE list_id=ANY($1::INT[])),
-
-    camps AS(
-        SELECT campaign_id
-        FROM campaign_lists
-        WHERE campaign_lists.list_id=ANY($1::INT[])
-    )
-
-    UPDATE campaigns SET
-    to_send=(CASE WHEN (SELECT cnt FROM listsCount) != 0 THEN (SELECT cnt FROM listsCount) ELSE to_send END),
-    --sent=(CASE WHEN $3 != 0 THEN $3 ELSE sent END),
-    --last_subscriber_id=(CASE WHEN $4 != 0 THEN $4 ELSE last_subscriber_id END),
-    updated_at=NOW()
-    WHERE id IN(SELECT campaign_id FROM camps)
-    AND status IN ('draft','paused');
-
-
 -- name: upsert-subscriber
 -- Upserts a subscriber where existing subscribers get their names and attributes overwritten.
 -- If $7 = true, update values, otherwise, skip.
@@ -474,7 +454,9 @@ INSERT INTO campaign_lists (campaign_id, list_id, list_name)
 -- for pagination in the frontend, albeit being a field that'll repeat
 -- with every resultant row.
 SELECT  c.id, c.uuid, c.name, c.subject, c.from_email,
-        c.messenger, c.started_at, c.to_send, c.sent, c.type,
+        c.messenger, c.started_at, 
+        campaign_to_send_count.subscriber_count AS to_send,
+        c.sent, c.type,
         c.body, c.altbody, c.send_at, c.headers, c.status, c.content_type, c.tags,
         c.template_id, c.created_at, c.updated_at,
         COUNT(*) OVER () AS total,
@@ -485,7 +467,18 @@ SELECT  c.id, c.uuid, c.name, c.subject, c.from_email,
                 FROM campaign_lists WHERE campaign_lists.campaign_id = c.id
         ) l
     ) AS lists
+
 FROM campaigns c
+INNER JOIN
+(
+    SELECT cl.campaign_id, COUNT(sl.subscriber_id) AS subscriber_count
+FROM campaign_lists cl
+RIGHT OUTER JOIN subscriber_lists sl
+ON cl.list_id=sl.list_id
+GROUP BY cl.campaign_id
+) AS campaign_to_send_count ON campaign_to_send_count.campaign_id=c.id
+
+-- WHERE ($1 = 0 OR c.id = $1) 
 WHERE ($1 = 0 OR id = $1)
     AND status=ANY(CASE WHEN CARDINALITY($2::campaign_status[]) != 0 THEN $2::campaign_status[] ELSE ARRAY[status] END)
     AND ($3 = '' OR CONCAT(name, subject) ILIKE $3)
@@ -549,6 +542,14 @@ WHERE campaigns.id = $1;
 -- name: get-campaign-status
 SELECT id, status, to_send, sent, started_at, updated_at
     FROM campaigns
+    INNER JOIN
+(
+    SELECT cl.campaign_id, COUNT(sl.subscriber_id) AS subscriber_count
+    FROM campaign_lists cl
+    RIGHT OUTER JOIN subscriber_lists sl
+    ON cl.list_id=sl.list_id
+    GROUP BY cl.campaign_id
+) AS campaign_to_send_count ON campaign_to_send_count.campaign_id=id
     WHERE status=$1;
 
 -- name: next-campaigns
