@@ -27,7 +27,7 @@ services:
     build:
       context: ../
       dockerfile: dev/app.Dockerfile
-    command: ["make", "run-frontend"]
+    command: [ "make", "run-frontend" ]
     ports:
       - "8080:8080"
     environment:
@@ -43,7 +43,7 @@ services:
     build:
       context: ../
       dockerfile: dev/app.Dockerfile
-    command: ["make", "run-backend-docker"]
+    command: [ "make", "run-backend-docker" ]
     ports:
       - "9000:9000"
     depends_on:
@@ -56,6 +56,7 @@ services:
 
 volumes:
   listmonk-dev-db:
+
 
 networks:
   listmonk-dev:
