@@ -34,6 +34,7 @@
     "campaigns.fieldInvalidName": "La longitud del nom no és vàlida.",
     "campaigns.fieldInvalidSendAt": "La data prevista hauria de ser en el futur.",
     "campaigns.fieldInvalidSubject": "Longitud no vàlida per a l'assumpte.",
+    "campaigns.finish": "Finalitza",
     "campaigns.formatHTML": "Format HTML",
     "campaigns.fromAddress": "Adreça remitent",
     "campaigns.fromAddressPlaceholder": "El teu nom <noreply@yoursite.com>",

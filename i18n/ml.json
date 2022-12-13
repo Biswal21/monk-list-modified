@@ -34,6 +34,7 @@
     "campaigns.fieldInvalidName": "`name` ന്റെ ദൈർഘ്യം അസാധുവാണ്.",
     "campaigns.fieldInvalidSendAt": "`send_at` ഭാവിയിലുള്ള തിയതിയായിരിക്കണം.",
     "campaigns.fieldInvalidSubject": "`subject` ന്റെ ദൈർഘ്യം അസാധുവാണ്.",
+    "campaigns.finish": "പൂർത്തിയാക്കുക",
     "campaigns.formatHTML": "Format HTML",
     "campaigns.fromAddress": "പ്രേക്ഷകൻ",
     "campaigns.fromAddressPlaceholder": "നിങ്ങളുടെ പേര് <noreply@yoursite.com>",

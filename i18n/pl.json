@@ -34,6 +34,7 @@
     "campaigns.fieldInvalidName": "Nieprawidłowa długość dla nazwy,",
     "campaigns.fieldInvalidSendAt": "Zaplanowana data powinna być w przyszłości,",
     "campaigns.fieldInvalidSubject": "Nieprawidłowa długość tytułu",
+    "campaigns.finish": "Zakończ",
     "campaigns.formatHTML": "Format HTML",
     "campaigns.fromAddress": "Adres od",
     "campaigns.fromAddressPlaceholder": "Twoja Nazwa <noreply@yoursite.com>",

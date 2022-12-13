@@ -34,6 +34,7 @@
     "campaigns.fieldInvalidName": "Độ dài không hợp lệ cho tên.",
     "campaigns.fieldInvalidSendAt": "Ngày dự kiến phải là trong tương lai.",
     "campaigns.fieldInvalidSubject": "Độ dài không hợp lệ cho chủ đề.",
+    "campaigns.finish": "Hoàn thành",
     "campaigns.formatHTML": "Định dạng HTML",
     "campaigns.fromAddress": "Từ địa chỉ",
     "campaigns.fromAddressPlaceholder": "Tên của bạn <noreply@yoursite.com>",

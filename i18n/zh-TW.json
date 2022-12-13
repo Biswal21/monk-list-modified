@@ -34,6 +34,7 @@
     "campaigns.fieldInvalidName": "名稱長度無效。",
     "campaigns.fieldInvalidSendAt": "預定日期應該在將來。",
     "campaigns.fieldInvalidSubject": "主題的長度無效。",
+    "campaigns.finish":"结束",
     "campaigns.formatHTML": "格式化HTML",
     "campaigns.fromAddress": "從地址",
     "campaigns.fromAddressPlaceholder": "你的名字<noreply@yoursite.com>",

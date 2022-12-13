@@ -34,6 +34,7 @@
     "campaigns.fieldInvalidName": "無効な長さの名前です。",
     "campaigns.fieldInvalidSendAt": "予定日は将来の日付であること。",
     "campaigns.fieldInvalidSubject": "長さが無効です。",
+    "campaigns.finish": "終了",
     "campaigns.formatHTML": "HTMLをフォーマット",
     "campaigns.fromAddress": "送り主のアドレス",
     "campaigns.fromAddressPlaceholder": "あなたの氏名 <noreply@yoursite.com>",

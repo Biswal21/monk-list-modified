@@ -82,3 +82,6 @@
 .mdi-speedometer:before { content: '\e826'; } /* '' */
 .mdi-logout-variant:before { content: '󰗽'; } /* '\f05fd' */
 .mdi-wrench-outline:before { content: '󰯠'; } /* '\f0be0' */
+.mdi-flag-variant-outline:before { content: '󰈾'; } /* '\f023e' */
+.mdi-shield-check-outline:before { content: '󰳈'; } /* '\f0cc8' */
+.mdi-email-alert-outline:before {content: '󰵂'; font-size: 140%; } /* '\f0d42' */

@@ -34,6 +34,7 @@
     "campaigns.fieldInvalidName": "Ungültige Länge für `name`.",
     "campaigns.fieldInvalidSendAt": "Das Datum muss in der Zukunft liegen.",
     "campaigns.fieldInvalidSubject": "Ungültige Länge für `subject`.",
+    "campaigns.finish": "Abschließen",
     "campaigns.formatHTML": "HTML formatieren",
     "campaigns.fromAddress": "Absender",
     "campaigns.fromAddressPlaceholder": "Dein Name <noreply@deineseite.de>",

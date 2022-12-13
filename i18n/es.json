@@ -34,6 +34,7 @@
     "campaigns.fieldInvalidName": "Longitud de nombre inválida",
     "campaigns.fieldInvalidSendAt": "La hora agendada debe ser en el futuro.",
     "campaigns.fieldInvalidSubject": "Longitud de asunto inválida",
+    "campaigns.finish": "Finalizar",
     "campaigns.formatHTML": "Formato HTML",
     "campaigns.fromAddress": "Dirección de remitente",
     "campaigns.fromAddressPlaceholder": "Su Nombre <no-reply@ejemplo.com>",

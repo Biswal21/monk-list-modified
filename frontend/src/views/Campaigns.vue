@@ -169,7 +169,7 @@
         </div>
       </b-table-column>
 
-      <b-table-column v-slot="props" cell-class="actions" width="15%" align="right">
+      <b-table-column v-slot="props" cell-class="actions" width="15%" align="right" >
         <div>
           <!-- start / pause / resume / scheduled -->
           <a href="" v-if="canStart(props.row)"
@@ -200,19 +200,14 @@
               <b-icon icon="clock-start" size="is-small" />
             </b-tooltip>
           </a>
-          <!-- <a href="" v-if="canResume(props.row)"
-            @click.prevent="$utils.confirm(null,
-              () => changeCampaignStatus(props.row, 'finished'))" data-cy="btn-start">
-            <b-tooltip :label="$t('campaigns.finish')" type="is-dark">
-              <b-icon icon="flag-variant-outline" size="is-small" />
-            </b-tooltip>
-          </a> -->
           <!-- placeholder for finished campaigns -->
           <a v-if="!canCancel(props.row)
             && !canSchedule(props.row) && !canStart(props.row)" data-disabled>
             <b-icon icon="rocket-launch-outline" size="is-small" />
           </a>
-
+          <a v-if="isDone(props.row)" data-disabled>
+            <b-icon icon="rocket-launch-outline" size="is-small" />
+          </a>
           <a href="" v-if="canCancel(props.row)"
             @click.prevent="$utils.confirm(null,
               () => changeCampaignStatus(props.row, 'cancelled'))"
@@ -223,6 +218,18 @@
           </a>
           <a v-else data-disabled>
             <b-icon icon="cancel" size="is-small" />
+          </a>
+          <!-- Added finish button -->
+          <a href="" v-if="canFinish(props.row)"
+            @click.prevent="$utils.confirm(null,
+              () => changeCampaignStatus(props.row, 'finished'))"
+              data-cy="btn-finish">
+            <b-tooltip :label="$t('campaigns.finish')" type="is-dark">
+              <b-icon icon="shield-check-outline" size="is-small" />
+            </b-tooltip>
+          </a>
+          <a v-else data-disabled>
+            <b-icon icon="shield-check-outline" size="is-small" />
           </a>
 
           <a href="" @click.prevent="previewCampaign(props.row)" data-cy="btn-preview">
@@ -306,6 +313,9 @@ export default Vue.extend({
       return c.status === 'running' || c.status === 'paused';
     },
     canResume(c) {
+      return c.status === 'paused';
+    },
+    canFinish(c) {
       return c.status === 'paused';
     },
     isSheduled(c) {

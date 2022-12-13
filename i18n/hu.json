@@ -34,6 +34,7 @@
     "campaigns.fieldInvalidName": "A név hossza érvénytelen.",
     "campaigns.fieldInvalidSendAt": "A tervezett dátumnak a jövőben kell lennie.",
     "campaigns.fieldInvalidSubject": "A tárgy hossza érvénytelen.",
+    "campaigns.finish": "Befejezés",
     "campaigns.formatHTML": "HTML formátum",
     "campaigns.fromAddress": "Címről",
     "campaigns.fromAddressPlaceholder": "A neved <noreply@yoursite.com>",
