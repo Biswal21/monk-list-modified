@@ -10,8 +10,8 @@ port = ${PGPORT}
 user = \"${PGUSER}\"
 password = \"${PGPASSWORD}\"
 database = \"${PGDATABASE}\"
-ssl_mode = \"disable\"
-max_open = 25
-max_idle = 25
+ssl_mode = \"${SSL_MODE}\"
+max_open = ${PG_MAX_OPEN}
+max_idle = ${PG_MAX_IDLE}
 max_lifetime = \"300s\"
 " > config.toml

@@ -1,0 +1,77 @@
+# NOTE: This docker-compose.yml is meant to be just an example guideline
+# on how you can achieve the same. It is not intented to run out of the box
+# and you must edit the below configurations to suit your needs.
+
+version: "3.8"
+
+# x-app-defaults:
+#   &app-defaults
+#   # restart: unless-stopped
+#   build:
+#     context: ./
+#     dockerfile: ./deploy/Dockerfile
+#   ports:
+#     - "9000:9000"
+#   networks:
+#     - listmonk
+  
+
+# x-db-defaults:
+#   &db-defaults
+#   image: postgres:13
+#   ports:
+#     - "5433:5432"
+#   networks:
+#     - listmonk
+#   env_file:
+#     - ./deploy/.db.env
+#   restart: unless-stopped
+#   healthcheck:
+#     test: [ "CMD-SHELL", "pg_isready -U listmonk" ]
+#     interval: 10s
+#     timeout: 5s
+#     retries: 6
+
+services:
+  db:
+    container_name: listmonk_db
+    image: postgres:13
+    ports:
+      - "5433:5432"
+    networks:
+      - listmonk
+    env_file:
+      - ./deploy/.db.env
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U listmonk" ]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+    volumes:
+      - type: volume
+        source: listmonk-data
+        target: /var/lib/postgresql/data
+
+  app:
+    build:
+      context: ./
+      dockerfile: ./deploy/Dockerfile
+    ports:
+      - "9000:9000"
+    networks:
+      - listmonk
+    container_name: listmonk_app
+    env_file:
+      - ./deploy/.env
+    # command: >
+    #   sh -c " ./config.sh
+    #           ./listmonk --idempotent --yes --upgrade --config config.toml||
+    #           ./listmonk --install --yes --upgrade"
+    depends_on:
+      - db
+networks:
+  listmonk:
+
+volumes:
+  listmonk-data:
