@@ -9,7 +9,7 @@
 - Clone the repo
 
 ```bash
- git clone https://github.com/Biswal21/monk-list-modified
+git clone https://github.com/Biswal21/monk-list-modified
 ```
 
 - Go to `monk-list-modified` directory
