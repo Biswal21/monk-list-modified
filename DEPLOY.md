@@ -18,6 +18,18 @@ git clone https://github.com/Biswal21/monk-list-modified
 cd monk-list-modified
 ```
 
+- Install `node_modules` for frontend
+
+```bash
+cd frontend && yarn install
+```
+
+- Return to root directory
+
+```bash
+cd ..
+```
+
 # Deployment using Docker Compose
 
 - Execute the following command on terminal in root directory to **build** both **backend** and **frontend** binaries along with **static files** in one package.
@@ -32,7 +44,8 @@ make dist
 cd deploy
 ```
 
-- Create the environment files in the same directory according to `.env.example` & `.db.env.example` for setting up `config.toml` file for application to parse **DB connection** credentials and **admin** **username** & **password.**
+- Create the environment files .`env` and `.db.env` in the same directory according to `.env.example` & `.db.env.example` for setting up `config.toml` file for application to parse **DB connection** credentials and **admin** **username** & **password.**
+
 - Go back to root directory and use `docker-compose up` to start the containers(For the first time build also use add `--build` flag)
 
 First time build & run :
